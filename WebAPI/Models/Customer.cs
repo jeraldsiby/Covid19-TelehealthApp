@@ -16,7 +16,6 @@ namespace WebAPI.Models
         public string Address { get; set; }
         public string PostalCode { get; set; }
         public DateTime Date { get; set; }
-        public TimeSpan CallDuration { get; set; }
         public string Response { get; set; }
     }
 }

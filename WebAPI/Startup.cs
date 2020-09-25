@@ -35,7 +35,7 @@ namespace WebAPI
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //registering the Repository with the Dependency Injection System
+            //registering the Repository with Dependency Injection 
             services.AddScoped<EfCoreCustomerRepository>();
         }
 

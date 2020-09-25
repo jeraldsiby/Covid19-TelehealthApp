@@ -19,7 +19,6 @@ namespace WebAPI.Migrations
                     Address = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    CallDuration = table.Column<TimeSpan>(nullable: false),
                     Response = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

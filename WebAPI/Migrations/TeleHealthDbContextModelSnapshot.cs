@@ -27,8 +27,6 @@ namespace WebAPI.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<TimeSpan>("CallDuration");
-
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("Email")

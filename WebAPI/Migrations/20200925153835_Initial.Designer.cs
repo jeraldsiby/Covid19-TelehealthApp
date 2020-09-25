@@ -10,7 +10,7 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(TeleHealthDbContext))]
-    [Migration("20200921234519_Initial")]
+    [Migration("20200925153835_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,6 @@ namespace WebAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address");
-
-                    b.Property<TimeSpan>("CallDuration");
 
                     b.Property<DateTime>("Date");
 
