@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CustomerCallService } from '../services/customer-call.service';
+import { CustomerCall } from '../models/customercall';
 
 @Component({
   selector: 'app-customer-call',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerCallComponent implements OnInit {
 
-  constructor() { }
+  customerCall$: Observable<CustomerCall>;
+  id: number;
 
-  ngOnInit() {
+  constructor(private customerCallService: CustomerCallService, private avRoute: ActivatedRoute) {
+    const idParam = 'id';
+    if (this.avRoute.snapshot.params[idParam]) {
+      this.id = this.avRoute.snapshot.params[idParam];
+    }
   }
 
+  ngOnInit() {
+    this.loadCustomerCall();
+  }
+
+  loadCustomerCall() {
+    this.customerCall$ = this.customerCallService.getCustomerCall(this.id);
+  }
 }

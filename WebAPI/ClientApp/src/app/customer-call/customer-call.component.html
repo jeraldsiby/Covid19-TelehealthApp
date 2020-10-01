@@ -1,1 +1,16 @@
-<p>customer-call works!</p>
+<h3>Customer Details: </h3>
+
+<ng-container *ngIf="(customerCall$ | async) as customerCall; else loading">
+
+    <div> Name: {{ customerCall.name }}</div>
+    <div> Email: {{ customerCall.email }}</div>
+    <ul>
+        <li> Address: {{ customerCall.address }} {{ customerCall.postalCode }}</li>
+        <li> Date: {{ customerCall.date| date: "dd.MM.y" }}</li>
+        <li> Response: {{ customerCall.response }}</li>
+    </ul>
+    <p>
+        <a [routerLink]="['/']" class="btn btn-success float-right">Back</a>
+    </p>
+</ng-container>
+<ng-template #loading>Loading…</ng-template>

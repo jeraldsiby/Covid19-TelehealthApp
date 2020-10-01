@@ -1,23 +1,23 @@
-<h1>Customer Calls</h1>
+<h2>Customer Call Details</h2>
 
 <p *ngIf="!(customerCalls$ | async)">
     <em>Loading...</em>
 </p>
 <p>
-    <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New Response</a>
+    <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New Call Response</a>
 </p>
 
 <table class="table table-sm table-hover" *ngIf="(customerCalls$ | async)?.length > 0">
     <thead>
         <tr>
-            <th>#</th>
+            <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
             <th>PostalCode</th>
             <th>Date</th>
             <th>Response</th>
-            <th></th>
+            <!-- <th></th> -->
             <th></th>
         </tr>
     </thead>
@@ -25,8 +25,7 @@
         <tr *ngFor="let customerCall of (customerCalls$ | async)">
             <td>{{ customerCall.id }}</td>
             <td>
-                <!-- <a [routerLink]="['/customercall/', customerCall.id]"></a> -->
-                {{ customerCall.name }}
+                <a [routerLink]="['/customercall/', customerCall.id]"> {{ customerCall.name }}</a>
             </td>
             <td>{{ customerCall.email }}</td>
             <td>{{ customerCall.address }}</td>
@@ -34,10 +33,7 @@
             <td>{{ customerCall.date | date: "dd.MM.y" }}</td>
             <td>{{ customerCall.response }}</td>
             <td>
-                <!-- <a [routerLink]="['/customercall/edit/', customercall.id]" class="btn btn-primary btn-sm float-right">Edit</a> -->
-            </td>
-            <td>
-                <!-- <a [routerLink]="" (click)="delete(customercall.id)" class="btn btn-danger btn-sm float-right">Delete</a> -->
+                <a [routerLink]="" (click)="delete(customerCall.id)" class="btn btn-danger btn-sm float-right">Delete</a>
             </td>
         </tr>
     </tbody>
