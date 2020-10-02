@@ -30,11 +30,11 @@ namespace WebAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services.AddDbContext<TeleHealthDbContext>(opt =>
-            //   opt.UseInMemoryDatabase("TeleHealthDb"));
+            services.AddDbContext<TeleHealthDbContext>(opt =>
+               opt.UseInMemoryDatabase("TeleHealthDb"));
 
-            services.AddDbContext<TeleHealthDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("TeleHealthApp")));
+            //services.AddDbContext<TeleHealthDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("TeleHealthApp")));
 
             services.AddCors(options =>
             {
