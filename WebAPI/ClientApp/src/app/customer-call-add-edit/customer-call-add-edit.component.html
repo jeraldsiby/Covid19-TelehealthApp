@@ -21,6 +21,33 @@
         </span>
     </div>
 
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Address</label>
+        <div class="col-md-12">
+            <input class="form-control" type="text" formControlName="address">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Postal Code</label>
+        <div class="col-md-12">
+            <input class="form-control" type="text" formControlName="postalCode">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Date (Today's Date: Cannot be changed )</label>
+        <!-- <div class="col-md-12">
+            <input class="form-control" type="text" formControlName="address">
+        </div> -->
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Response</label>
+        <div class="col-md-12">
+            <textarea class="form-control" rows="5" formControlName="response"></textarea>
+        </div>
+    </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success float-right">Save</button>
         <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>

@@ -15,6 +15,10 @@ export class CustomerCallAddEditComponent implements OnInit {
   actionType: string;
   formName: string;
   formEmail: string;
+  formAddress: string;
+  formPostalCode: string;
+  formDate: Date;
+  formResponse: string;
   id: number;
   errorMessage: any;
   existingCustomerCall: CustomerCall;
@@ -24,6 +28,10 @@ export class CustomerCallAddEditComponent implements OnInit {
     this.actionType = 'Add';
     this.formName = 'name';
     this.formEmail = 'email';
+    this.formAddress = 'address';
+    this.formDate = new Date;
+    this.formPostalCode = 'postalCode';
+    this.formResponse = 'response';
     if (this.avRoute.snapshot.params[idParam]) {
       this.id = this.avRoute.snapshot.params[idParam];
     }
@@ -33,21 +41,16 @@ export class CustomerCallAddEditComponent implements OnInit {
         id: 0,
         name: ['', [Validators.required]],
         email: ['', [Validators.required]],
+        date: [''],
+        address: [''],
+        postalCode: [''],
+        response: ['']
       }
     )
   }
 
   ngOnInit() {
 
-    if (this.id > 0) {
-      this.actionType = 'Edit';
-      this.customerCallService.getCustomerCall(this.id)
-        .subscribe(data => (
-          this.existingCustomerCall = data,
-          this.form.controls[this.formName].setValue(data.name),
-          this.form.controls[this.formEmail].setValue(data.email)
-        ));
-    }
   }
 
   save() {
@@ -58,12 +61,11 @@ export class CustomerCallAddEditComponent implements OnInit {
     if (this.actionType === 'Add') {
       let customerCall: CustomerCall = {
         date: new Date(),
-        //name: 'Martin',
         name: this.form.get(this.formName).value,
         email: this.form.get(this.formEmail).value,
-        address: '',
-        postalCode: '',
-        response: ''
+        address: this.form.get(this.formAddress).value,
+        postalCode: this.form.get(this.formPostalCode).value,
+        response: this.form.get(this.formResponse).value
       };
 
       this.customerCallService.saveCustomerCall(customerCall)
@@ -71,19 +73,6 @@ export class CustomerCallAddEditComponent implements OnInit {
           this.router.navigate(['/customercall', data.id]);
         });
     }
-
-    // if (this.actionType === 'Edit') {
-    //   let customerCall: CustomerCall = {
-    //     id: this.existingCustomerCall.id,
-    //     name: this.existingCustomerCall.name,
-    //     email: this.existingCustomerCall.email
-
-    //   };
-    //   this.customerCallService.updateCustomerCall(customerCall.id, customerCall)
-    //     .subscribe((data) => {
-    //       this.router.navigate([this.router.url]);
-    //     });
-    // }
   }
 
   cancel() {
